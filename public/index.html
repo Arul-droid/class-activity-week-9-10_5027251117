@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Aplikasi untuk mengelola data mahasiswa."
+    />
+    <title>Data Mahasiswa</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">ADMINISTRASI AKADEMIK</p>
+          <h1>Data Mahasiswa</h1>
+          <p class="subtitle">Kelola data mahasiswa dalam satu tempat.</p>
+        </div>
+        <div class="student-count" aria-live="polite">
+          <span id="student-count">0</span>
+          <span>mahasiswa</span>
+        </div>
+      </header>
+
+      <div id="startup-notice" class="startup-notice" role="status" hidden></div>
+      <div id="feedback" class="feedback" role="status" hidden></div>
+
+      <section class="layout" aria-label="Pengelolaan data mahasiswa">
+        <section class="panel form-panel" aria-labelledby="form-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">FORMULIR</p>
+              <h2 id="form-title">Tambah mahasiswa</h2>
+            </div>
+          </div>
+          <form id="mahasiswa-form">
+            <input id="original-nrp" name="originalNrp" type="hidden" />
+            <label for="nama">Nama lengkap</label>
+            <input
+              id="nama"
+              name="nama"
+              type="text"
+              placeholder="Contoh: Budi Santoso"
+              maxlength="120"
+              autocomplete="name"
+              required
+            />
+            <label for="nrp">NRP</label>
+            <input
+              id="nrp"
+              name="nrp"
+              type="text"
+              placeholder="Contoh: 5027251001"
+              maxlength="50"
+              required
+            />
+            <div class="form-actions">
+              <button id="submit-button" class="button button-primary" type="submit">
+                Simpan mahasiswa
+              </button>
+              <button
+                id="cancel-edit"
+                class="button button-secondary"
+                type="button"
+                hidden
+              >
+                Batal
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel table-panel" aria-labelledby="list-title">
+          <div class="panel-heading list-heading">
+            <div>
+              <p class="eyebrow">DAFTAR</p>
+              <h2 id="list-title">Semua mahasiswa</h2>
+            </div>
+            <button id="refresh-button" class="button button-secondary" type="button">
+              Muat ulang
+            </button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">NRP</th>
+                  <th scope="col" class="actions-heading">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="mahasiswa-list">
+                <tr>
+                  <td class="table-message" colspan="4">Memuat data mahasiswa...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <footer>Data tersimpan di basis data mahasiswa.</footer>
+    </main>
+  </body>
+</html>
